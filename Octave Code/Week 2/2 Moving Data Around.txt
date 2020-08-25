@@ -1,0 +1,76 @@
+%% dimensions
+sz = size(A) % 1x2 matrix: [(number of rows) (number of columns)]
+size(A,1) % number of rows
+size(A,2) % number of cols
+length(v) % size of longest dimension
+
+
+%% loading data
+pwd   % show current directory (current path)
+cd 'C:\Users\ang\Octave files'  % change directory 
+ls    % list files in current directory 
+load q1y.dat   % alternatively, load('q1y.dat')
+load q1x.dat
+who   % list variables in workspace
+whos  % list variables in workspace (detailed view) 
+clear q1y      % clear command without any args clears all vars
+v = q1x(1:10); % first 10 elements of q1x (counts down the columns)
+save hello.mat v;  % save variable v into file hello.mat
+save hello.txt v -ascii; % save as ascii
+% fopen, fread, fprintf, fscanf also work  [[not needed in class]]
+
+%% indexing
+A(3,2)  % indexing is (row,col)
+A(2,:)  % get the 2nd row. 
+        % ":" means every element along that dimension
+A(:,2)  % get the 2nd col
+A([1 3],:) % print all  the elements of rows 1 and 3
+
+A(:,2) = [10; 11; 12]     % change second column
+A = [A, [100; 101; 102]]; % append column vec
+A(:) % Select all elements as a column vector.
+
+% Putting data together 
+A = [1 2; 3 4; 5 6]
+B = [11 12; 13 14; 15 16] % same dims as A
+C = [A B]  % concatenating A and B matrices side by side
+C = [A, B] % concatenating A and B matrices side by side
+C = [A; B] % Concatenating A and B top and bottom
+
+help help
+help eye
+help rand
+A= [1 2; 3 4; 5 6]
+size(A) % ans =  3   2
+
+sz = size(A) 
+size(sz) % ans =1   2
+size(A,1)
+% ans = 3 number of row in A
+size(A,2)
+% ans = 2 number of columns in A
+length(A) 
+% ans = 3 size if the longest dimension of A 
+%but usually length is applied to a vector
+
+pwd %this command shows the current directory 
+CD 'C\Users\' % this command changes the diectory
+
+load feturerx.dat % loads the file featurex
+laod priceY.dat
+who %this command shows the variables in current scope.
+whos % this variable shows the variables with deatails
+V = priceY(1: 10) %assings 10 elemntes of the first row into V
+save hello.mat V; %this commad will save V into a falie hello.mat
+save hello.text A -ascii %save as text (ASCII)
+A(3,2) % indexing element
+A(2,:) % ":" means every element along that row/column
+A([1 3],: ) %
+A(:, 2 )= [10; 11; 12] %assigning 
+A = [A, [100; 101; 102]];  %Append another column vector to right
+A(:) %put all elements of A into into a single vector
+
+M = [1 2; 3 4; 5 6];
+N = [11 12; 13 14; 15 16]
+O = [M N] %concatanating both matrices into 'O'
+O = [M; N] %concatanating N into the bottom of M

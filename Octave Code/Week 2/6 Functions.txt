@@ -1,0 +1,37 @@
+function y = squareThisNumber(x)
+
+y = x^2;
+
+%To call the function in Octave, do either:
+%1) Navigate to the directory of the functionName.m file and call the function:
+    % Navigate to directory:
+    cd /path/to/function
+
+    % Call the function:
+    functionName(args)
+% Add the directory of the function to the load path and save it:
+    % To add the path for the current session of Octave:
+    addpath('/path/to/function/')
+
+    % To remember the path for future sessions of Octave, after executing addpath above, also do:
+    savepath
+%Octave's functions can return more than one value:
+    function [y1, y2] = squareandCubeThisNo(x)
+    y1 = x^2
+    y2 = x^3
+%Call the above function this way:
+    [a,b] = squareandCubeThisNo(x)
+
+x = [1 1; 1 2; 1 3]
+y= [1; 2; 3]
+theta =[0; 1]
+
+%call the function "costFunctionJ.m"
+fuction J= costFunctionJ(x, y, theta)
+% x is the "design matrix" contang our training example
+%y is the class labels
+m = size(x,1); % number of training example
+predictions = x*theta; % predictions of hoythesis on all m examples
+sqrrErrors (predictions-y). ^2; % squared errors
+J= 1/(2*m) * sum(sqrErrors);
+
