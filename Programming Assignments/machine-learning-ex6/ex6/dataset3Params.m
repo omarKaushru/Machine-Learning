@@ -24,9 +24,25 @@ sigma = 0.3;
 %
 
 
+err = 1.0;
 
+list = [0.01, 0.03, 0.1, 0.3, 1, 3, 10, 30];
+for i = 1 : length(list)
+    for j = 1 : length(list)
+        C1 = list(i);
+        sigma1 = list(j);
 
+        model = svmTrain(X, y, C1, @(x1, x2) gaussianKernel(x1, x2, sigma1));
+        predictions = svmPredict(model, Xval);
 
+        err1 = mean(double(predictions ~= yval));
+        if err1 < err
+                C = C1;
+                sigma = sigma1;
+                err = err1;
+        end
+    end
+end
 
 
 % =========================================================================
