@@ -21,7 +21,13 @@ idx = zeros(size(X,1), 1);
 % Note: You can use a for-loop over the examples to compute this.
 %
 
-
+for i = 1 : rows(X)
+  d_sqare = zeros(1, 3);
+  for j = 1 : K
+     dist(j) = sum((X(i,:) - centroids(j,:)).^2)
+  end
+  [large, idx(i)] = (min(dist));
+end
 
 
 
